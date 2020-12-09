@@ -1,0 +1,15 @@
+def words_order(text: str, words: list) -> bool:
+    try:
+        count = 0
+        text = text.split(" ")
+        words_Text_Index = [text.index(i) for i in words]
+        if words.count(words[0]) > 1 and words.count(words[0]) == len(words):
+            return False
+        for a in range(len(words_Text_Index)):
+            if words_Text_Index[a] < words_Text_Index[a - 1]:
+                count += 1
+        if words_Text_Index[-1] > words_Text_Index[0]:
+            count -= 1
+        return True if count == 0 else False
+    except ValueError:
+        return False
