@@ -1,0 +1,20 @@
+from typing import List
+
+def sort_by_ext(files: List[str]) -> List[str]:
+    ext_list = []
+    new_list = []
+    empty_list = []
+    for i, c in [i.split(".") for i in files]:
+        if i != "":
+            ext_list.append(c + "." + i)
+        if i == "":
+            empty_list.append(c)
+    empty_list.sort(reverse= True)
+    ext_list.sort()
+    for a, b in [a.split(".") for a in ext_list]:
+        new_list.append(b + "." + a)
+    for l in empty_list:
+        new_list.insert(0, "." + l)
+    return new_list
+
+print(sort_by_ext(['1.cad', '2.bat', '1.aa', '.bat']))
